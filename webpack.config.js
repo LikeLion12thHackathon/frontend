@@ -1,0 +1,51 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
+
+module.exports = {
+    mode: process.env.mode || 'development',
+    entry: "./src/index.js",
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "[hash].js",
+        publicPath: "/",
+    },
+    resolve: {
+        // path.resove 형태로 사용할 수도 있다.
+        // 그러면 node의 기본 모듈 'path'를 불러와야 한다.
+        extensions: [".js", ".jsx", ".css"],
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: "babel-loader",
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                ],
+            },
+        ],
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: "./public/index.html",
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css",
+        }),
+    ],
+    devServer: {
+        host: "localhost",
+        port: 3000,
+        hot: true,
+        open: true,
+    },
+};
