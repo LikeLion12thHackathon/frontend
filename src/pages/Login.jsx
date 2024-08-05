@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormContainer, ErrorMsgContainer, FormInnerWrapper, LoginInput, LoginSubmitButton, LoginTitle, StyledForm, StyledLabel, StyledLink, InputContainer } from "../css/styled/signin_up.styled.js";
+import * as Styled from "../css/styled/signin_up.styled.js";
 import { EmailFormat } from "../constant/user.constraints.js";
 import { postLoginDataWith } from "../function/login.register.js";
 import { useNavigate } from "react-router-dom";
@@ -79,11 +79,11 @@ export const Login = () => {
 
     return (
         <>
-            <FormContainer>
+            <Styled.FormContainer>
                 <form>
-                    <FormInnerWrapper>
-                        <InputContainer>
-                            <LoginInput 
+                    <Styled.FormInnerWrapper>
+                        <Styled.InputContainer>
+                            <Styled.LoginInput 
                                 type="username"
                                 id="username"
                                 name="username"
@@ -92,11 +92,11 @@ export const Login = () => {
                                 value={username}
                                 onChange={onChange}
                             />
-                        </InputContainer>
-                    </FormInnerWrapper>
-                    <FormInnerWrapper>
-                        <InputContainer>
-                            <LoginInput 
+                        </Styled.InputContainer>
+                    </Styled.FormInnerWrapper>
+                    <Styled.FormInnerWrapper>
+                        <Styled.InputContainer>
+                            <Styled.LoginInput 
                                 type="password"
                                 id="password"
                                 name="password"
@@ -105,37 +105,37 @@ export const Login = () => {
                                 value={password}
                                 onChange={onChange}
                             />
-                        </InputContainer>
-                    </FormInnerWrapper>
+                        </Styled.InputContainer>
+                    </Styled.FormInnerWrapper>
 
-                    <FormInnerWrapper>
-                        <ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</ErrorMsgContainer>
-                    </FormInnerWrapper>
+                    <Styled.FormInnerWrapper>
+                        <Styled.ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</Styled.ErrorMsgContainer>
+                    </Styled.FormInnerWrapper>
 
                     
-                    <FormInnerWrapper>
-                        <LoginSubmitButton
+                    <Styled.FormInnerWrapper>
+                        <Styled.LoginSubmitButton
                             type="button"
                             value="login"
                             disabled={error?.length > 0}
                             onClick={onSubmit}
                         >로그인
-                        </LoginSubmitButton>
-                    </FormInnerWrapper>
-                    <FormInnerWrapper>
+                        </Styled.LoginSubmitButton>
+                    </Styled.FormInnerWrapper>
+                    <Styled.LabelBox>
                         <span style={{
                             fontWeight: "bold",
                             color: "#666666",
                         }}>
                             처음이세요?
                         </span>
-                        <StyledLink to="/register">
+                        <Styled.StyledLink to="/register">
                             회원가입
-                        </StyledLink>
-                    </FormInnerWrapper>
+                        </Styled.StyledLink>
+                    </Styled.LabelBox>
                     {/* <ToastContainer /> */} 
                 </form>
-            </FormContainer>
+            </Styled.FormContainer>
         </>
     )
 }

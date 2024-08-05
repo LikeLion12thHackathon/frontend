@@ -20,10 +20,22 @@ export const LoginTitle = styled.h1`
 export const FormInnerWrapper = styled.div`
     margin-top: 20px;
     width: 100%;
-    justify-content: center; /* 수직 중앙 정렬 */
-    align-items: center; /* 수평 중앙 정렬 */
 `
 
+export const ImageBox = styled.div`
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+export const LabelBox = styled.div`
+    width: 332px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 export const StyledLabel = styled.label`
     display: block;
     font-weight: 600;
@@ -69,6 +81,55 @@ export const FileInput = styled.input`
         outline: none;
     }
     
+`
+export const RadioBox = styled.div`
+    width: 332px;
+    height: 52px;
+    border-radius: 10px;
+    background-color: #f2f4f6;
+    display: flex;
+    text-align: center;
+    // align-items: center;
+`
+export const CheckBoxInput = styled.input`
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    //padding: 20px 15px;
+    opacity: 0; /* 시각적으로는 숨김 */
+    margin: 0px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+
+    &:checked + label {
+        background-color: #4186F5;
+        color: #ffffff;
+        border-radius: 10px;
+    }
+`
+
+export const CheckboxLabel = styled.label`
+    box-sizing: border-box;
+    padding: 1rem 69px;
+    cursor: pointer;
+    border-radius: ${({ htmlFor }) => (htmlFor === 'male' ? ' 10px 0 0 10px' : '0 10px 10px 0')}; /* 조건부 border-radius */
+    background-color: #f2f4f6;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #5C5C5C;
+`
+
+export const CheckBoxLabel = styled.label`
+    box-sizing: border-box;
+    padding: 1rem 62px;
+    cursor: pointer;
+    border-radius: ${({ htmlFor }) => (htmlFor === 'admin' ? ' 10px 0 0 10px' : '0 10px 10px 0')}; /* 조건부 border-radius */
+    background-color: #f2f4f6;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #5C5C5C;
 `
 
 export const ErrorMsgContainer = styled.div`

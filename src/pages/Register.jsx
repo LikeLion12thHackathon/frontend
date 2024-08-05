@@ -15,7 +15,7 @@ export const Register = () => {
     const [profileimg, setProfileimg] = useState("");
     const [name, setName] = useState("");
     const [gender, setGender] = useState("");
-    const [admin, setAdmin] = useState(true);
+    const [admin, setAdmin] = useState(false);
     
     const [error, setError] = useState("");
     const [valid, setValid] = useState({
@@ -25,7 +25,7 @@ export const Register = () => {
         profileimg: true, // 프로필 이미지는 유효성 검사에서 제외
         name: false,
         gender: false,
-        admin: true, // 기본값을 true로 설정 (true/false 모두 허용)
+        admin: false, // 기본값을 true로 설정 (true/false 모두 허용)
     });
 
     function validation(value, constraints) {
@@ -85,7 +85,7 @@ export const Register = () => {
                 setValid((prevState) => ({...prevState, gender: result === null}));
                 break;
             case "admin":
-                setAdmin(value === "true" || value === "false"); // true/false 모두 허용
+                setAdmin(value === "true"); // true/false 모두 허용
                 setValid((prevState) => ({ ...prevState, admin: true })); // 별도의 유효성 검사 필요 
                 break;
         }
@@ -186,28 +186,30 @@ export const Register = () => {
 
                     <Styled.FormInnerWrapper>
                         <Styled.StyledLabel>성별</Styled.StyledLabel>
-                        <div>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="gender"
-                                    value="male"
-                                    checked={gender === 'male'}
-                                    onChange={onChange}
-                                />
-                                Male
-                            </label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="gender"
-                                    value="female"
-                                    checked={gender === 'female'}
-                                    onChange={onChange}
-                                />
-                                Female
-                            </label>
-                        </div>
+                        <Styled.RadioBox>        
+                            <Styled.CheckBoxInput
+                                type="radio"
+                                name="gender"
+                                value="male"
+                                id="male"
+                                checked={gender === 'male'}
+                                onChange={onChange}
+                            />  
+                            <Styled.CheckboxLabel htmlFor="male">
+                                남성
+                            </Styled.CheckboxLabel>   
+                            <Styled.CheckBoxInput
+                                type="radio"
+                                name="gender"
+                                value="female"
+                                id="female"
+                                checked={gender === 'female'}
+                                onChange={onChange}
+                            />
+                            <Styled.CheckboxLabel htmlFor="female">
+                                여성
+                            </Styled.CheckboxLabel>
+                        </Styled.RadioBox>
                     </Styled.FormInnerWrapper>
 
                     <Styled.FormInnerWrapper>
@@ -224,28 +226,30 @@ export const Register = () => {
 
                     <Styled.FormInnerWrapper>
                         <Styled.StyledLabel htmlFor="admin">관리자 여부</Styled.StyledLabel>
-                        <div>
-                            <label>
-                                <input
+                        <Styled.RadioBox>
+                                <Styled.CheckBoxInput
                                     type="radio"
                                     name="admin"
                                     value="true"
+                                    id="admin"
                                     checked={admin === true}
                                     onChange={onChange}
                                 />
+                            <Styled.CheckBoxLabel htmlFor="admin">
                                 관리자
-                            </label>
-                            <label>
-                                <input
+                            </Styled.CheckBoxLabel>   
+                                <Styled.CheckBoxInput
                                     type="radio"
                                     name="admin"
                                     value="false"
+                                    id="user"
                                     checked={admin === false}
                                     onChange={onChange}
                                 />
-                                일반 사용자
-                            </label>
-                        </div>
+                            <Styled.CheckBoxLabel htmlFor="user">
+                                사용자
+                            </Styled.CheckBoxLabel>
+                        </Styled.RadioBox>
                     </Styled.FormInnerWrapper>
 
                     <Styled.FormInnerWrapper>
@@ -263,14 +267,12 @@ export const Register = () => {
                         </Styled.LoginSubmitButton>
                     </Styled.FormInnerWrapper>
 
-                    <Styled.FormInnerWrapper>
-                        <span style={{ fontWeight: "bold", color: "#666666" }}>
-                            계정이 있으신가요?
-                        </span>
+                    <Styled.LabelBox>
+                        <span style={{ fontWeight: "bold", color: "#666666" }}>계정이 있으신가요?</span>
                         <Styled.StyledLink to="/">
-                            로그인하기
+                            로그인
                         </Styled.StyledLink>
-                    </Styled.FormInnerWrapper>
+                    </Styled.LabelBox>
                     {/* <ToastContainer /> */}
                 </form>
             </Styled.FormContainer>

@@ -29,9 +29,11 @@ export const UserDetail = () => {
             <Header text="내 정보 조회" />
             <Styled.FormContainer>
                 <form>
-                        <Styled.FormInnerWrapper>
-                        <Styled.StyledLabel>프로필 사진</Styled.StyledLabel>
+                    <Styled.FormInnerWrapper>
+                    <Styled.StyledLabel>프로필 사진</Styled.StyledLabel>
+                    <Styled.ImageBox>
                         <img src={user.avatar || profileavatar} alt="프로필" style={{ margin: '20px', width: '200px', height: '200px' }} />
+                    </Styled.ImageBox>
                     </Styled.FormInnerWrapper>
                     <Styled.FormInnerWrapper>
                         <Styled.StyledLabel htmlFor="username">아이디</Styled.StyledLabel>
@@ -68,28 +70,30 @@ export const UserDetail = () => {
                     </Styled.FormInnerWrapper>
                     <Styled.FormInnerWrapper>
                         <Styled.StyledLabel>성별</Styled.StyledLabel>
-                        <div>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="gender"
-                                    value="male"
-                                    checked={gender === 'male'}
-                                    readOnly // 읽기 전용
-                                />
-                                Male
-                            </label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="gender"
-                                    value="female"
-                                    checked={gender === 'female'}
-                                    readOnly // 읽기 전용
-                                />
-                                Female
-                            </label>
-                        </div>
+                        <Styled.RadioBox>                      
+                            <Styled.CheckBoxInput
+                                type="radio"
+                                name="gender"
+                                value="male"
+                                id="male"
+                                checked={gender === 'male'}
+                                readOnly // 읽기 전용
+                            />
+                            <Styled.CheckboxLabel htmlFor="male">
+                                남성
+                            </Styled.CheckboxLabel>   
+                            <Styled.CheckBoxInput
+                                type="radio"
+                                name="gender"
+                                value="female"
+                                id="female"
+                                checked={gender === 'female'}
+                                readOnly // 읽기 전용
+                            />
+                            <Styled.CheckboxLabel htmlFor="female">
+                                여성
+                            </Styled.CheckboxLabel>
+                        </Styled.RadioBox>
                     </Styled.FormInnerWrapper>
                     <Styled.FormInnerWrapper>
                         <Styled.StyledLabel htmlFor="email">이메일</Styled.StyledLabel>
@@ -104,28 +108,30 @@ export const UserDetail = () => {
                     </Styled.FormInnerWrapper>
                     <Styled.FormInnerWrapper>
                         <Styled.StyledLabel htmlFor="admin">관리자 여부</Styled.StyledLabel>
-                        <div>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="admin"
-                                    value="true"
-                                    checked={admin === true}
-                                    readOnly // 읽기 전용
-                                />
+                        <Styled.RadioBox>                
+                            <Styled.CheckBoxInput
+                                type="radio"
+                                name="admin"
+                                value="true"
+                                id="admin"
+                                checked={admin === true}
+                                readOnly // 읽기 전용
+                            />
+                            <Styled.CheckBoxLabel htmlFor="admin">
                                 관리자
-                            </label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="admin"
-                                    value="false"
-                                    checked={admin === false}
-                                    readOnly // 읽기 전용
-                                />
-                                일반 사용자
-                            </label>
-                        </div>
+                            </Styled.CheckBoxLabel>
+                            <Styled.CheckBoxInput
+                                type="radio"
+                                name="admin"
+                                value="false"
+                                id="user"
+                                checked={admin === false}
+                                readOnly // 읽기 전용
+                            />
+                            <Styled.CheckBoxLabel htmlFor="user">
+                                사용자
+                            </Styled.CheckBoxLabel>
+                        </Styled.RadioBox>
                     </Styled.FormInnerWrapper>
                 </form>
             </Styled.FormContainer>
