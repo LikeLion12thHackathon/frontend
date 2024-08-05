@@ -18,8 +18,9 @@ const App = () => {
 
     useEffect(() => {
         const storedTokenInStorage = getAccesstoken();
-        console.log("Current token:", token); // 현재 상태의 token
-        console.log("Stored token in storage:", storedTokenInStorage); // 세션 스토리지에서 가져온 token
+        // 테스트용 로그
+        // console.log("Current token:", token); // 현재 상태의 token
+        // console.log("Stored token in storage:", storedTokenInStorage); // 세션 스토리지에서 가져온 token
     
         // storedTokenInStorage가 null이 아닐 경우, token을 업데이트
         if (storedTokenInStorage !== token) {

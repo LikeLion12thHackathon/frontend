@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as Styled from '../../css/styled/ask.detail.styled';
-import { getAllSymptoms } from '../../function/ask'; // 경로를 실제 경로로 수정
+import { getAllSymptoms } from '../../function/ask';
 
-export const AskDetail = ({ date }) => {
+export const QuestionLog = ({ date }) => {
     const [symptomsData, setSymptomsData] = useState([]);
 
-    // date를 Date 객체로 변환
     const dateObject = new Date(date);
 
     const fetchData = async () => {
@@ -14,22 +13,24 @@ export const AskDetail = ({ date }) => {
         console.log(data);
 
         // data가 false인 경우 처리
-        if (!data) {
+        if (!data || !data.successFlag) {
             console.error('데이터를 가져오는 데 실패했습니다.');
             return;
         }
 
-        if (data.successFlag) {
-            // date와 일치하는 데이터 필터링
+        // data.data가 배열인지 확인 후 필터링
+        if (Array.isArray(data.data)) {
             const filteredData = data.data.filter(item => {
                 const createdAt = new Date(item.created_at);
-                const createdAtDate = `${createdAt.getFullYear()}-${(createdAt.getMonth() + 1).toString().padStart(2, '0')}-${createdAt.getDate().toString().padStart(2, '0')}`; // 'YYYY-MM-DD' 형식으로 변환
+                const createdAtDate = `${createdAt.getFullYear()}-${(createdAt.getMonth() + 1).toString().padStart(2, '0')}-${createdAt.getDate().toString().padStart(2, '0')}`;
 
-                const formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`; // 'YYYY-MM-DD' 형식으로 변환
+                const formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
 
-                return createdAtDate === formattedDate; // 두 날짜 비교
+                return createdAtDate === formattedDate;
             });
             setSymptomsData(filteredData);
+        } else {
+            console.error('데이터 형식이 올바르지 않습니다.');
         }
     };
 
@@ -39,7 +40,7 @@ export const AskDetail = ({ date }) => {
 
     return (
         <Styled.DetailContainer>
-            {symptomsData && symptomsData.length > 0 ? (
+            {symptomsData.length > 0 ? (
                 symptomsData.map(symptom => (
                     <div key={symptom.id}>
                         <h3>{symptom.question_text}</h3>

@@ -43,6 +43,9 @@ export const fadeIn = keyframes`
 `;
 
 export const Dot = styled.span`
+    margin-top: 15vh;
+    font-size: 4.5rem;
+    color: #4186F5;
     display: inline-block;
     opacity: 0; /* 초기 상태는 투명하게 설정 */
     animation: ${fadeIn} 0.5s forwards; /* 애니메이션 적용 */

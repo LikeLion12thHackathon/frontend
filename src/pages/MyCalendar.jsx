@@ -2,7 +2,7 @@ import { Header } from '../components/Header';
 import * as Styled from '../css/styled/calendar.styled';
 import moment from "moment";
 import { useState } from 'react';
-import { AskDetail } from '../components/Calendar/AskDetail';
+import { QuestionLog } from '../components/MyCalendar/QuestionLog';
 
 export const MyCalendar = () => {
     const today = new Date();
@@ -65,7 +65,7 @@ export const MyCalendar = () => {
 
             {/* 날짜 내용 보여주는 컴포넌트 */}
             {selectedDate && (
-                <AskDetail date={selectedDate} />
+                <QuestionLog date={selectedDate} />
             )}
         </Styled.Container>
     );

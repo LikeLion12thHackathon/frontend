@@ -5,9 +5,9 @@ import { postAskData } from "../../function/ask";
 import { useSetRecoilState } from 'recoil';
 import { questionState } from '../../hooks/questionState';
 
-export const AskBox = () => {
+export const AskBox = ({ setLoadingMessage }) => {
     const [question, setQuestion] = useState('');
-    const [loadingMessage, setLoadingMessage] = useState('');
+    const [loadingMessage, setLoadingMessageLocal] = useState(''); // 로컬 상태 추가
     const [displayedDots, setDisplayedDots] = useState([]);
     const setQuestionData = useSetRecoilState(questionState); // Recoil 상태 업데이트 함수
 
@@ -33,7 +33,8 @@ export const AskBox = () => {
         const url = '/api/v1/questions/';
 
         // 로딩 메시지 설정
-        setLoadingMessage("잠시만 기다려 주세요...");
+        setLoadingMessage("잠시만 기다려 주세요..."); // 부모 컴포넌트의 상태 설정
+        setLoadingMessageLocal("잠시만 기다려 주세요..."); // 로컬 상태 설정
 
         const result = await postAskData(askObj, url);
         if (result && result.successFlag) {
@@ -48,6 +49,8 @@ export const AskBox = () => {
 
         // 로딩 메시지 초기화
         setLoadingMessage('');
+        setLoadingMessageLocal(''); // 로컬 상태 초기화
+        setDisplayedDots([]); // 로딩이 끝나면 점 초기화
     };
 
     useEffect(() => {
@@ -74,15 +77,14 @@ export const AskBox = () => {
                 onKeyDown={handleSubmit}
                 readOnly={!!loadingMessage} // 로딩 메시지가 있는 경우 읽기 전용으로 설정
             />
-             <div>
+            <Styled.SubmitButton onClick={submitQuestion} disabled={!!loadingMessage}> {/* 로딩 중일 때 버튼 비활성화 */}
+                <img src={enter} alt="Submit" style={{ width: '1rem', height: '1rem' }} />
+            </Styled.SubmitButton>
+            <div>
                 {displayedDots.map((dot, index) => (
                     <Styled.Dot key={index} style={{ animationDelay: `${index * 300}ms` }}>{dot}</Styled.Dot>
                 ))}
             </div>
-            <Styled.SubmitButton onClick={submitQuestion} disabled={!!loadingMessage}> {/* 로딩 중일 때 버튼 비활성화 */}
-                <img src={enter} alt="Submit" style={{ width: '1rem', height: '1rem' }} />
-            </Styled.SubmitButton>
         </Styled.AskBox>
     );
 };
-
