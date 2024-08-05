@@ -7,7 +7,6 @@ export const FormContainer = styled.div`
     flex-direction: column;
     //justify-content: center; /* 수직 중앙 정렬 */
     align-items: center; /* 수평 중앙 정렬 */
-    box-sizing: border-box;
     //margin: 0 auto; /* 중앙 정렬을 위한 여백 */
     width: 100%;
     height: 120vh;
@@ -64,8 +63,6 @@ export const RegisterInput = styled.input`
 export const FileInput = styled.input`
     padding: 20px 15px;
     font-size: 18px;
-    border-radius: 10px;
-    border: 1px solid #cccccc;
     box-sizing: border-box;
     &:focus {
         border: 2px solid #4186F5;
@@ -91,7 +88,7 @@ export const StyledLink = styled(Link)`
     transition: color 0.3s ease;
 
     &:hover, &:focus {
-        color: 4186F5;
+        color: #4186F5;
     }
 `
 
@@ -109,21 +106,21 @@ export const LoginSubmitButton = styled.button`
     transition: background-color 0.3s ease;
 
     &:focus, &:hover {
-        background-color: var(--bg-main-green);
+        background-color: #3578d5;
     }
     /* 버튼이 클릭되었다가 떼질 때 */
     &:active {
-        background-color: var(--bg-main-green);
+        background-color: #3578d5;
     }
 `
 export const InputContainer = styled.div`
-    position: relative;
+    /* position: relative; */
     display: flex;
     align-items: center;
 `;
 
 export const ToggleButton = styled.button`
-    position: absolute;
+    /* position: absolute; */
     right: 10px; // 입력 필드 안쪽 여백 조정
     background: none;
     border: none;

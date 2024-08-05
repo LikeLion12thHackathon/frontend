@@ -80,57 +80,61 @@ export const Login = () => {
     return (
         <>
             <FormContainer>
-                <FormInnerWrapper>
-                    <InputContainer>
-                        <LoginInput 
-                            type="username"
-                            id="username"
-                            name="username"
-                            required
-                            value={username}
-                            onChange={onChange}
-                        />
-                    </InputContainer>
-                </FormInnerWrapper>
-                <FormInnerWrapper>
-                    <InputContainer>
-                        <LoginInput 
-                            type="password"
-                            id="password"
-                            name="password"
-                            required
-                            value={password}
-                            onChange={onChange}
-                        />
-                    </InputContainer>
-                </FormInnerWrapper>
+                <form>
+                    <FormInnerWrapper>
+                        <InputContainer>
+                            <LoginInput 
+                                type="username"
+                                id="username"
+                                name="username"
+                                placeholder="아이디"
+                                required
+                                value={username}
+                                onChange={onChange}
+                            />
+                        </InputContainer>
+                    </FormInnerWrapper>
+                    <FormInnerWrapper>
+                        <InputContainer>
+                            <LoginInput 
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="비밀번호"
+                                required
+                                value={password}
+                                onChange={onChange}
+                            />
+                        </InputContainer>
+                    </FormInnerWrapper>
 
-                 <FormInnerWrapper>
-                    <ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</ErrorMsgContainer>
-                </FormInnerWrapper>
+                    <FormInnerWrapper>
+                        <ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</ErrorMsgContainer>
+                    </FormInnerWrapper>
 
-                
-                <FormInnerWrapper>
-                    <LoginSubmitButton
-                        type="button"
-                        value="login"
-                        disabled={error?.length > 0}
-                        onClick={onSubmit}
-                    >로그인
-                    </LoginSubmitButton>
-                </FormInnerWrapper>
-                <FormInnerWrapper>
-                    <span style={{
-                        fontWeight: "bold",
-                        color: "#666666",
-                    }}>
-                        처음이세요?
-                    </span>
-                    <StyledLink to="/register">
-                        회원가입
-                    </StyledLink>
-                </FormInnerWrapper>
-                {/* <ToastContainer /> */}
+                    
+                    <FormInnerWrapper>
+                        <LoginSubmitButton
+                            type="button"
+                            value="login"
+                            disabled={error?.length > 0}
+                            onClick={onSubmit}
+                        >로그인
+                        </LoginSubmitButton>
+                    </FormInnerWrapper>
+                    <FormInnerWrapper>
+                        <span style={{
+                            fontWeight: "bold",
+                            color: "#666666",
+                        }}>
+                            처음이세요?
+                        </span>
+                        <StyledLink to="/register">
+                            회원가입
+                        </StyledLink>
+                    </FormInnerWrapper>
+                    {/* <ToastContainer /> */} 
+                </form>
             </FormContainer>
         </>
     )

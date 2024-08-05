@@ -8,7 +8,7 @@ import { MyPage } from "./pages/MyPage";
 import { MyCalendar } from "./pages/MyCalendar";
 import { AskBox } from "./components/Main/AskBox";
 import { UpdatePassword } from "./components/Mypage/UpdatePassword";
-import { UpdateUserdata } from "./components/Mypage/UpdateUserData";
+import { UserDetail } from "./components/Mypage/UserDetail";
 import { NavigationBar } from "./components/NavigationBar";
 import { PrivateRoute } from './pages/PrivateRoute';
 import { getAccesstoken } from "./function/common";
@@ -35,6 +35,7 @@ const App = () => {
                 {/* Public으로 접근 가능한 경로 */}
                 <Route path="/" element={<Login setToken={setToken} />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/userdetail" element={<UserDetail />} />
 
                 {/* Private으로 접근 가능한 경로 */}
                 <Route path="/main" element={<PrivateRoute authenticated={token} element={<Main />} />} />
@@ -42,7 +43,7 @@ const App = () => {
                 <Route path="/mycalendar" element={<PrivateRoute authenticated={token} element={<MyCalendar />} />} />
                 <Route path="/askbox" element={<PrivateRoute authenticated={token} element={<AskBox />} />} />
                 <Route path="/updatepassword" element={<PrivateRoute authenticated={token} element={<UpdatePassword />} />} />
-                <Route path="/updateuserdata" element={<PrivateRoute authenticated={token} element={<UpdateUserdata />} />} />
+                <Route path="/userdetail" element={<PrivateRoute authenticated={token} element={<UserDetail />} />} />
 
                 {/* default 경로 설정 */}
                 <Route path="*" element={<Navigate replace to="/" />} />
