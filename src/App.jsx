@@ -18,10 +18,14 @@ const App = () => {
 
     useEffect(() => {
         const storedTokenInStorage = getAccesstoken();
+        console.log("Current token:", token); // 현재 상태의 token
+        console.log("Stored token in storage:", storedTokenInStorage); // 세션 스토리지에서 가져온 token
+    
+        // storedTokenInStorage가 null이 아닐 경우, token을 업데이트
         if (storedTokenInStorage !== token) {
             setToken(storedTokenInStorage);
         }
-    }, [token]);
+    }, []); // 빈 배열로 설정하여 컴포넌트가 마운트될 때만 실행
 
     return (
         <>
@@ -32,12 +36,12 @@ const App = () => {
                 <Route path="/register" element={<Register />} />
 
                 {/* Private으로 접근 가능한 경로 */}
-                <Route path="/main" element={<PrivateRoute authenticated={token} component={<Main />} />} />
-                <Route path="/mypage" element={<PrivateRoute authenticated={token} component={<MyPage />} />} />
-                <Route path="/mycalendar" element={<PrivateRoute authenticated={token} component={<MyCalendar />} />} />
-                <Route path="/askbox" element={<PrivateRoute authenticated={token} component={<AskBox />} />} />
-                <Route path="/updatepassword" element={<PrivateRoute authenticated={token} component={<UpdatePassword />} />} />
-                <Route path="/updateuserdata" element={<PrivateRoute authenticated={token} component={<UpdateUserdata />} />} />
+                <Route path="/main" element={<PrivateRoute authenticated={token} element={<Main />} />} />
+                <Route path="/mypage" element={<PrivateRoute authenticated={token} element={<MyPage />} />} />
+                <Route path="/mycalendar" element={<PrivateRoute authenticated={token} element={<MyCalendar />} />} />
+                <Route path="/askbox" element={<PrivateRoute authenticated={token} element={<AskBox />} />} />
+                <Route path="/updatepassword" element={<PrivateRoute authenticated={token} element={<UpdatePassword />} />} />
+                <Route path="/updateuserdata" element={<PrivateRoute authenticated={token} element={<UpdateUserdata />} />} />
 
                 {/* default 경로 설정 */}
                 <Route path="*" element={<Navigate replace to="/" />} />

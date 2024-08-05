@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { ErrorMsgContainer, FormInnerWrapper, RegisterInput, LoginSubmitButton, LoginTitle, StyledForm, StyledLabel, StyledLink } from "../css/styled/signin_up.styled";
-import { useNavigate } from "react-router-dom";
 import { isRequired, MinimumLength, CantContainSpace, EmailFormat, SpecialText, UserRules } from "../constant/user.constraints";
 //import { sendReqAndSaveToken } from "../../function/login.register";
 import { postRegisterDataWith } from "../function/login.register";
 import profileavatar from "../assets/profileimg.png";
 
 export const Register = () => {
-    const navigate = useNavigate();
     const BACK_API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
     const [username, setUsername] = useState("");
@@ -116,7 +114,7 @@ export const Register = () => {
 
         // true값을 반환해오면, login페이지로 이동
         if(resultAfterPost && resultAfterPost.successFlag) {
-            navigate("/");
+            window.location.href = "/";
             // ToastifySuccess("회원가입 성공");
         } else { 
             // ToastifyError("회원가입 실패");
