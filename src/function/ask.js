@@ -33,7 +33,7 @@ export const postAskData = async (askObj,url) => {
 }
 
 // 질의한 모든 데이터 받기
-export const getAllSymptoms = async (url) => {
+export const getAllSymptoms= async (url) => {
     const BACK_API = `${serverEndPoint}${url}`;
     const token = getAccesstoken();
 
@@ -54,7 +54,6 @@ export const getAllSymptoms = async (url) => {
 
         // 서버에서 반환된 데이터
         const data = await response.json();
-        console.log(data);
         return data;
     } catch(error) {
         console.error(error); // 에러 로그 출력

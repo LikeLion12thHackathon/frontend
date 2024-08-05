@@ -46,8 +46,8 @@ export const MyPage = () => {
     };
 
     // 정보 수정 핸들러
-    const handleUserDetail = () => {
-        navigate('/userdetail'); // 비밀번호 변경 페이지로 이동
+    const handleUpdateMyinfo = () => {
+        navigate('/updateuserdata'); // 비밀번호 변경 페이지로 이동
     };
 
     // 비밀번호 변경 핸들러
@@ -61,7 +61,7 @@ export const MyPage = () => {
             <Styled.ProfileContainer>
                 <Styled.MyprofileImg src={user && user.avatar ? user.avatar : defaultAvatar} alt={`${user && user.name ? user.name : '사용자'}의 프로필`} />
                 <Styled.MynameText>{user && user.name}</Styled.MynameText>
-                <Styled.UpdateButton onClick={handleUserDetail}>내 정보 조회</Styled.UpdateButton>
+                <Styled.UpdateButton onClick={handleUpdateMyinfo}>내 정보 조회</Styled.UpdateButton>
             </Styled.ProfileContainer>
             <Styled.AskContainer></Styled.AskContainer>
             <Styled.LoginUpdateBox>

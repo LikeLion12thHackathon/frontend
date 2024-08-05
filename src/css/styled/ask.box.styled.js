@@ -18,33 +18,18 @@ export const AskLabel = styled.div`
     margin-bottom: 2.6rem;
 `;
 
-export const AskInputContainer = styled.div`
-    position: relative; /* 버튼을 절대 위치로 설정하기 위해 필요 */
-    width: 332px; /* 고정된 너비 */
-`;
-
 export const AskInput = styled.textarea`
-    width: 100%; /* 고정된 너비에 맞춤 */
+    width: 332px;
     height: 104px;
     background-color: #E8EDF4;
     border-radius: 1.25rem;
     border: 2px solid #4186F5;
     font-size: 1rem;
-    padding: 1rem; /* 위쪽 패딩 */
-    padding-right: 1rem; /* 버튼 공간을 위한 오른쪽 패딩 추가 */
-    box-sizing: border-box;
-    resize: none;
-    overflow: auto;
-
-    /* 스크롤바 스타일 */
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: transparent; /* 스크롤바 배경 색상 */
-    }
-
+    padding: 1rem; /* 위쪽 패딩을 크게 설정 */
+    padding-right: 50px; /* 버튼 공간을 위한 오른쪽 패딩 추가 */
+    box-sizing: border-box; /* 패딩과 보더를 포함 */
+    resize: none; /* 사용자가 크기를 조정할 수 없도록 설정 */
+    overflow: auto; /* 텍스트가 넘칠 경우 스크롤바 표시 */
 `;
 
 // 애니메이션 정의
@@ -58,9 +43,6 @@ export const fadeIn = keyframes`
 `;
 
 export const Dot = styled.span`
-    margin-top: 15vh;
-    font-size: 4.5rem;
-    color: #4186F5;
     display: inline-block;
     opacity: 0; /* 초기 상태는 투명하게 설정 */
     animation: ${fadeIn} 0.5s forwards; /* 애니메이션 적용 */
@@ -74,14 +56,14 @@ export const SubmitButton = styled.button`
     width: 24px;
     height: 24px;
     position: absolute; /* 버튼을 절대 위치로 설정 */
-    right: 10px; /* 오른쪽 여백 */
-    bottom: 15px; /* 아래쪽 여백 */
-    background-color: #4186F5;
+    right: 15px; /* 오른쪽 여백 */
+    bottom: 10px; /* 아래쪽 여백 */
+    background-color: #4186F5; /* 버튼 배경색 */
     color: white;
     border: none;
     border-radius: 50%; /* 둥근 버튼 */
-    cursor: pointer;
-    transition: background-color 0.3s;
+    cursor: pointer; /* 커서 포인터로 변경 */
+    transition: background-color 0.3s; /* 배경색 전환 효과 */
 
     &:hover {
         background-color: #3578d5; /* 호버 시 색상 변경 */
