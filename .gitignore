@@ -77,6 +77,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # 파일 무시
-.env
+# .env
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,react
