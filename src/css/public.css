@@ -24,7 +24,16 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #ffffff;
   width: 100%;
-  height: auto;
+  height: 100vh;
+}
+
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* 스크롤바 배경 색상 */
 }
 
 body #root {

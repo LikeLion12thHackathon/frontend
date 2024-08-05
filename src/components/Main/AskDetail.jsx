@@ -20,7 +20,7 @@ export const AskDetail = () => {
                             components={{
                                 // 'li' 요소에 대한 스타일링 추가
                                 li: ({ children }) => (
-                                    <div style={{ marginLeft: '20px' }}>
+                                    <div style={{ marginLeft: '16px' }}>
                                         <strong>*</strong> {children}
                                     </div>
                                 ),

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ErrorMsgContainer, FormInnerWrapper, LoginInput, LoginSubmitButton, LoginTitle, StyledForm, StyledLabel, StyledLink } from "../css/styled/signin_up.styled.js";
+import { FormContainer, ErrorMsgContainer, FormInnerWrapper, LoginInput, LoginSubmitButton, LoginTitle, StyledForm, StyledLabel, StyledLink, InputContainer } from "../css/styled/signin_up.styled.js";
 import { EmailFormat } from "../constant/user.constraints.js";
 import { postLoginDataWith } from "../function/login.register.js";
 import { useNavigate } from "react-router-dom";
@@ -79,52 +79,59 @@ export const Login = () => {
 
     return (
         <>
-            <FormInnerWrapper>
-                <LoginInput 
-                    type="username"
-                    id="username"
-                    name="username"
-                    required
-                    value={username}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <LoginInput 
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    value={password}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
+            <FormContainer>
+                <FormInnerWrapper>
+                    <InputContainer>
+                        <LoginInput 
+                            type="username"
+                            id="username"
+                            name="username"
+                            required
+                            value={username}
+                            onChange={onChange}
+                        />
+                    </InputContainer>
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <InputContainer>
+                        <LoginInput 
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            value={password}
+                            onChange={onChange}
+                        />
+                    </InputContainer>
+                </FormInnerWrapper>
 
-            <FormInnerWrapper>
-                <ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</ErrorMsgContainer>
-            </FormInnerWrapper>
+                 <FormInnerWrapper>
+                    <ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</ErrorMsgContainer>
+                </FormInnerWrapper>
 
-            
-            <FormInnerWrapper>
-                <LoginSubmitButton
-                    type="button"
-                    value="login"
-                    disabled={error?.length > 0}
-                    onClick={onSubmit}
-                >로그인</LoginSubmitButton>
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <span style={{
-                    fontWeight: "bold",
-                    color: "#666666",
-                }}>
-                    처음이세요?
-                </span>
-                <StyledLink to="/register">
-                    회원가입
-                </StyledLink>
-            </FormInnerWrapper>
-            {/* <ToastContainer /> */}
+                
+                <FormInnerWrapper>
+                    <LoginSubmitButton
+                        type="button"
+                        value="login"
+                        disabled={error?.length > 0}
+                        onClick={onSubmit}
+                    >로그인
+                    </LoginSubmitButton>
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <span style={{
+                        fontWeight: "bold",
+                        color: "#666666",
+                    }}>
+                        처음이세요?
+                    </span>
+                    <StyledLink to="/register">
+                        회원가입
+                    </StyledLink>
+                </FormInnerWrapper>
+                {/* <ToastContainer /> */}
+            </FormContainer>
         </>
     )
 }

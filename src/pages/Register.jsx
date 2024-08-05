@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ErrorMsgContainer, FormInnerWrapper, RegisterInput, LoginSubmitButton, LoginTitle, StyledForm, StyledLabel, StyledLink } from "../css/styled/signin_up.styled";
+import { FormContainer, ErrorMsgContainer, FormInnerWrapper, RegisterInput, LoginSubmitButton, LoginTitle, StyledForm, StyledLabel, StyledLink } from "../css/styled/signin_up.styled";
 import { isRequired, MinimumLength, CantContainSpace, EmailFormat, SpecialText, UserRules } from "../constant/user.constraints";
 //import { sendReqAndSaveToken } from "../../function/login.register";
 import { postRegisterDataWith } from "../function/login.register";
@@ -125,143 +125,145 @@ export const Register = () => {
 
     return (
         <>
-            <LoginTitle>프로필 설정</LoginTitle>
-            <FormInnerWrapper>
-                {/* <Avatar 
-                    src={profileimg} 
-                    style={{margin:'20px'}} 
-                    size={200} 
-                    onClick={()=>{fileInput.current.click()}}/> */}
-                <StyledLabel htmlFor="profileimg">프로필 사진</StyledLabel>
-                <input
-                    type="file"
-                    id="profileimg"
-                    name="profileimg"
-                    required
-                    value={profileimg}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <StyledLabel htmlFor="username">아이디</StyledLabel>
-                <RegisterInput 
-                    type="text"
-                    id="username"
-                    name="username"
-                    required
-                    value={username}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <StyledLabel htmlFor="password">비밀번호</StyledLabel>
-                <RegisterInput 
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    value={password}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <StyledLabel htmlFor="name">이름</StyledLabel>
-                <RegisterInput 
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={name}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <StyledLabel>성별</StyledLabel>
-                <div>
-                    <label>
-                        <input
-                            type="radio"
-                            id="gender"
-                            name="gender"
-                            value="male"
-                            checked={gender === 'male'}
-                            onChange={onChange}
-                        />
-                        Male
-                    </label>
-                    <label>
-                        <input
-                            type="radio"
-                            id="gender"
-                            name="gender"
-                            value="female"
-                            checked={gender === 'female'}
-                            onChange={onChange}
-                        />
-                        Female
-                    </label>
-                </div>
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <StyledLabel htmlFor="email">이메일</StyledLabel>
-                <RegisterInput
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={email}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <StyledLabel htmlFor="admin">관리자 여부</StyledLabel>
-                <div>
-                    <label>
-                        <input
-                            type="radio"
-                            name="admin"
-                            value="true"
-                            checked={admin === true}
-                            onChange={onChange}
-                        />
-                        관리자
-                    </label>
-                    <label>
-                        <input
-                            type="radio"
-                            name="admin"
-                            value="false"
-                            checked={admin === false}
-                            onChange={onChange}
-                        />
-                        일반 사용자
-                    </label>
-                </div>
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</ErrorMsgContainer>
-            </FormInnerWrapper>
+            <FormContainer>
+                    <LoginTitle>프로필 설정</LoginTitle>
+                <FormInnerWrapper>
+                    {/* <Avatar 
+                        src={profileimg} 
+                        style={{margin:'20px'}} 
+                        size={200} 
+                        onClick={()=>{fileInput.current.click()}}/> */}
+                    <StyledLabel htmlFor="profileimg">프로필 사진</StyledLabel>
+                    <input
+                        type="file"
+                        id="profileimg"
+                        name="profileimg"
+                        required
+                        value={profileimg}
+                        onChange={onChange}
+                    />
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <StyledLabel htmlFor="username">아이디</StyledLabel>
+                    <RegisterInput 
+                        type="text"
+                        id="username"
+                        name="username"
+                        required
+                        value={username}
+                        onChange={onChange}
+                    />
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <StyledLabel htmlFor="password">비밀번호</StyledLabel>
+                    <RegisterInput 
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        value={password}
+                        onChange={onChange}
+                    />
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <StyledLabel htmlFor="name">이름</StyledLabel>
+                    <RegisterInput 
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={name}
+                        onChange={onChange}
+                    />
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <StyledLabel>성별</StyledLabel>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                id="gender"
+                                name="gender"
+                                value="male"
+                                checked={gender === 'male'}
+                                onChange={onChange}
+                            />
+                            Male
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                id="gender"
+                                name="gender"
+                                value="female"
+                                checked={gender === 'female'}
+                                onChange={onChange}
+                            />
+                            Female
+                        </label>
+                    </div>
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <StyledLabel htmlFor="email">이메일</StyledLabel>
+                    <RegisterInput
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={email}
+                        onChange={onChange}
+                    />
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <StyledLabel htmlFor="admin">관리자 여부</StyledLabel>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                name="admin"
+                                value="true"
+                                checked={admin === true}
+                                onChange={onChange}
+                            />
+                            관리자
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="admin"
+                                value="false"
+                                checked={admin === false}
+                                onChange={onChange}
+                            />
+                            일반 사용자
+                        </label>
+                    </div>
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</ErrorMsgContainer>
+                </FormInnerWrapper>
 
-            <FormInnerWrapper>
-                <span style={{
-                        fontWeight: "lighter",
-                        color: "#aeaeae"
-                }}>
-                    계정이 없으신가요?
-                </span>
-                <StyledLink to="/">
-                    로그인하기
-                </StyledLink>
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <LoginSubmitButton
-                    type="button"
-                    value="register"
-                    disabled={error?.length > 0}
-                    onClick={onSubmit}
-                >회원가입</LoginSubmitButton>
-            </FormInnerWrapper>
-            {/* <ToastContainer /> */}
+                <FormInnerWrapper>
+                    <span style={{
+                            fontWeight: "lighter",
+                            color: "#aeaeae"
+                    }}>
+                        계정이 없으신가요?
+                    </span>
+                    <StyledLink to="/">
+                        로그인하기
+                    </StyledLink>
+                </FormInnerWrapper>
+                <FormInnerWrapper>
+                    <LoginSubmitButton
+                        type="button"
+                        value="register"
+                        disabled={error?.length > 0}
+                        onClick={onSubmit}
+                    >회원가입</LoginSubmitButton>
+                </FormInnerWrapper>
+                {/* <ToastContainer /> */}
+            </FormContainer>
         </>
     )
 }

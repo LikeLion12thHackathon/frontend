@@ -4,39 +4,43 @@ import { getAllSymptoms } from '../../function/ask';
 
 export const QuestionLog = ({ date }) => {
     const [symptomsData, setSymptomsData] = useState([]);
-
-    const dateObject = new Date(date);
+    const [loading, setLoading] = useState(true); // 로딩 상태 추가
+    const [error, setError] = useState(null); // 에러 상태 추가
 
     const fetchData = async () => {
-        const url = '/api/v1/questions/';
-        const data = await getAllSymptoms(url);
-        console.log(data);
+        setLoading(true);
+        try {
+            const url = '/api/v1/questions/';
+            const data = await getAllSymptoms(url);
+            console.log(data);
 
-        // data가 false인 경우 처리
-        if (!data || !data.successFlag) {
-            console.error('데이터를 가져오는 데 실패했습니다.');
-            return;
-        }
+            if (!data || !data.successFlag) {
+                throw new Error('데이터를 가져오는 데 실패했습니다.');
+            }
 
-        // data.data가 배열인지 확인 후 필터링
-        if (Array.isArray(data.data)) {
-            const filteredData = data.data.filter(item => {
-                const createdAt = new Date(item.created_at);
-                const createdAtDate = `${createdAt.getFullYear()}-${(createdAt.getMonth() + 1).toString().padStart(2, '0')}-${createdAt.getDate().toString().padStart(2, '0')}`;
-
-                const formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
-
-                return createdAtDate === formattedDate;
-            });
-            setSymptomsData(filteredData);
-        } else {
-            console.error('데이터 형식이 올바르지 않습니다.');
+            if (Array.isArray(data.data)) {
+                const formattedDate = moment(date).format("YYYY-MM-DD");
+                const filteredData = data.data.filter(item => {
+                    const createdAtDate = moment(item.created_at).format("YYYY-MM-DD");
+                    return createdAtDate === formattedDate;
+                });
+                setSymptomsData(filteredData);
+            } else {
+                throw new Error('데이터 형식이 올바르지 않습니다.');
+            }
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
         fetchData();
     }, [date]);
+
+    if (loading) return <p>로딩 중...</p>; // 로딩 메시지
+    if (error) return <p>{error}</p>; // 에러 메시지
 
     return (
         <Styled.DetailContainer>

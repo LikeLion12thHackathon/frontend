@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const StyledForm = styled.form`
+
+export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
-    /* width, height는 내부 컴포넌트들의 사이즈로 결정 */
+    //justify-content: center; /* 수직 중앙 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
+    box-sizing: border-box;
+    //margin: 0 auto; /* 중앙 정렬을 위한 여백 */
     width: 100%;
-    height: auto;
-    margin: auto; margin-top: 12vh;
-    padding: 50px;
-    color: var(--bg-original-black);
-    background-color: var(--bg-original-white);
-    border-radius: 7%;
-    filter: drop-shadow(5px 5px 3px var(--bg-main-green));
+    height: 120vh;
 `
 export const LoginTitle = styled.h1`
     text-align: center;
@@ -23,6 +21,8 @@ export const LoginTitle = styled.h1`
 export const FormInnerWrapper = styled.div`
     margin-top: 20px;
     width: 100%;
+    justify-content: center; /* 수직 중앙 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
 `
 
 export const StyledLabel = styled.label`
@@ -91,7 +91,7 @@ export const StyledLink = styled(Link)`
     transition: color 0.3s ease;
 
     &:hover, &:focus {
-        color: var(--bg-main-green);
+        color: 4186F5;
     }
 `
 
@@ -101,7 +101,6 @@ export const LoginSubmitButton = styled.button`
     font-weight: 600;
     padding: 10px;
     cursor: pointer;
-    margin: 0 auto;
     font-size: 20px;
     color: var(--bg-original-white);
     background-color: #4186f5;
