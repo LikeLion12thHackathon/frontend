@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ErrorMsgContainer, FormInnerWrapper, LoginInput, LoginSubmitButton, LoginTitle, StyledForm, StyledLabel, StyledLink } from "../css/styled/signin_up.styled.js";
+import * as Styled from "../css/styled/signin_up.styled.js";
 import { EmailFormat } from "../constant/user.constraints.js";
 import { postLoginDataWith } from "../function/login.register.js";
 import { useNavigate } from "react-router-dom";
@@ -79,52 +79,63 @@ export const Login = () => {
 
     return (
         <>
-            <FormInnerWrapper>
-                <LoginInput 
-                    type="username"
-                    id="username"
-                    name="username"
-                    required
-                    value={username}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <LoginInput 
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    value={password}
-                    onChange={onChange}
-                />
-            </FormInnerWrapper>
+            <Styled.FormContainer>
+                <form>
+                    <Styled.FormInnerWrapper>
+                        <Styled.InputContainer>
+                            <Styled.LoginInput 
+                                type="username"
+                                id="username"
+                                name="username"
+                                placeholder="아이디"
+                                required
+                                value={username}
+                                onChange={onChange}
+                            />
+                        </Styled.InputContainer>
+                    </Styled.FormInnerWrapper>
+                    <Styled.FormInnerWrapper>
+                        <Styled.InputContainer>
+                            <Styled.LoginInput 
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="비밀번호"
+                                required
+                                value={password}
+                                onChange={onChange}
+                            />
+                        </Styled.InputContainer>
+                    </Styled.FormInnerWrapper>
 
-            <FormInnerWrapper>
-                <ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</ErrorMsgContainer>
-            </FormInnerWrapper>
+                    <Styled.FormInnerWrapper>
+                        <Styled.ErrorMsgContainer $visibleTrue={`${error?.length > 0}`}>{error}</Styled.ErrorMsgContainer>
+                    </Styled.FormInnerWrapper>
 
-            
-            <FormInnerWrapper>
-                <LoginSubmitButton
-                    type="button"
-                    value="login"
-                    disabled={error?.length > 0}
-                    onClick={onSubmit}
-                >로그인</LoginSubmitButton>
-            </FormInnerWrapper>
-            <FormInnerWrapper>
-                <span style={{
-                    fontWeight: "bold",
-                    color: "#666666",
-                }}>
-                    처음이세요?
-                </span>
-                <StyledLink to="/register">
-                    회원가입
-                </StyledLink>
-            </FormInnerWrapper>
-            {/* <ToastContainer /> */}
+                    
+                    <Styled.FormInnerWrapper>
+                        <Styled.LoginSubmitButton
+                            type="button"
+                            value="login"
+                            disabled={error?.length > 0}
+                            onClick={onSubmit}
+                        >로그인
+                        </Styled.LoginSubmitButton>
+                    </Styled.FormInnerWrapper>
+                    <Styled.LabelBox>
+                        <span style={{
+                            fontWeight: "bold",
+                            color: "#666666",
+                        }}>
+                            처음이세요?
+                        </span>
+                        <Styled.StyledLink to="/register">
+                            회원가입
+                        </Styled.StyledLink>
+                    </Styled.LabelBox>
+                    {/* <ToastContainer /> */} 
+                </form>
+            </Styled.FormContainer>
         </>
     )
 }

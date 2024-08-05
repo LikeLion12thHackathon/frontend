@@ -19,12 +19,24 @@
 }
 html,
 body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden; /* 가로 스크롤 숨기기 */
   overflow-y: auto;   /* 세로 스크롤은 자동으로 생성  */
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #ffffff;
   width: 100%;
-  height: auto;
+  height: 100vh;
+  display: flex;
+}
+
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* 스크롤바 배경 색상 */
 }
 
 body #root {

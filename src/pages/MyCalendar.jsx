@@ -2,14 +2,14 @@ import { Header } from '../components/Header';
 import * as Styled from '../css/styled/calendar.styled';
 import moment from "moment";
 import { useState } from 'react';
-import { AskDetail } from '../components/Calendar/AskDetail';
+import { QuestionLog } from '../components/Mycalendar/QuestionLog';
 
 export const MyCalendar = () => {
     const today = new Date();
     const [date, setDate] = useState(today);
     const [activeStartDate, setActiveStartDate] = useState(new Date());
-    const [attendDay] = useState(["2024-08-04", "2023-08-05"]); // 출석한 날짜 예시
-    const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜 상태
+    const [attendDay] = useState(["2024-08-04", "2023-08-05"]);
+    const [selectedDate, setSelectedDate] = useState(null);
 
     const handleDateChange = (newDate) => {
         setDate(newDate);
@@ -22,7 +22,8 @@ export const MyCalendar = () => {
     };
 
     const handleTileClick = (date) => {
-        setSelectedDate(date); // 여기서 selectedDate에 날짜를 할당
+        setSelectedDate(date);
+        console.log('Selected Date:', date); // 확인용 로그
     };
 
     return (
@@ -40,11 +41,11 @@ export const MyCalendar = () => {
                     next2Label={null}
                     prev2Label={null}
                     minDetail="year"
-                    activeStartDate={activeStartDate === null ? undefined : activeStartDate}
+                    activeStartDate={activeStartDate}
                     onActiveStartDateChange={({ activeStartDate }) => setActiveStartDate(activeStartDate)}
                     tileContent={({ date, view }) => {
                         let html = [];
-                        const formattedDate = moment(date).format("YYYY-MM-DD"); // 날짜 형식
+                        const formattedDate = moment(date).format("YYYY-MM-DD");
 
                         if (view === "month" && date.getMonth() === today.getMonth() && date.getDate() === today.getDate()) {
                             html.push(<Styled.StyledToday key="today">오늘</Styled.StyledToday>);
@@ -59,13 +60,10 @@ export const MyCalendar = () => {
                         );
                     }}
                 />
-                {/* 오늘 버튼 추가 */}
-                <Styled.StyledDate onClick={handleTodayClick}>오늘</Styled.StyledDate>
             </Styled.CalendarContainer>
 
-            {/* 날짜 내용 보여주는 컴포넌트 */}
             {selectedDate && (
-                <AskDetail date={selectedDate} />
+                <QuestionLog date={selectedDate} />
             )}
         </Styled.Container>
     );
