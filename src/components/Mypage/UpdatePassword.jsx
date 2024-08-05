@@ -68,66 +68,68 @@ export const UpdatePassword = () => {
     return (
         <>
             <Header text="비밀번호 변경" />
-            <form>
-                <Styled.FormInnerWrapper>
-                    <Styled.InputContainer>
-                        <Styled.LoginInput 
-                            type={showCurrentPassword ? "text" : "password"}
-                            placeholder='현재 비밀번호' 
-                            value={currentPassword}
-                            onChange={(e) => setCurrentPassword(e.target.value)}
-                            required
-                        />
-                        <Styled.ToggleButton onClick={() => setShowCurrentPassword(!showCurrentPassword)}>
-                            {showCurrentPassword ? '숨기기' : '보기'}
-                        </Styled.ToggleButton>
-                    </Styled.InputContainer>
-                </Styled.FormInnerWrapper>
-                <Styled.FormInnerWrapper>
-                    <Styled.InputContainer>
-                        <Styled.LoginInput 
-                            type={showNewPassword ? "text" : "password"}
-                            placeholder='새 비밀번호' 
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                            required
-                        />
-                        <Styled.ToggleButton onClick={() => setShowNewPassword(!showNewPassword)}>
-                            {showNewPassword ? '숨기기' : '보기'}
-                        </Styled.ToggleButton>
-                    </Styled.InputContainer>
-                </Styled.FormInnerWrapper>
-                <Styled.FormInnerWrapper>
-                    <Styled.InputContainer>
-                        <Styled.LoginInput 
-                            type={showConfirmPassword ? "text" : "password"}
-                            placeholder='새 비밀번호 확인' 
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required
-                        />
-                        <Styled.ToggleButton onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                            {showConfirmPassword ? '숨기기' : '보기'}
-                        </Styled.ToggleButton>
-                    </Styled.InputContainer>
-                </Styled.FormInnerWrapper>
-                <Styled.FormInnerWrapper>
-                    <Styled.ErrorMsgContainer $visibleTrue={`${errorMessages.length > 0}`}>
-                        {errorMessages.map((error, index) => (
-                            <div key={index}>{error}</div>
-                        ))}
-                    </Styled.ErrorMsgContainer>
-                </Styled.FormInnerWrapper>
-                <Styled.FormInnerWrapper>
-                    <Styled.LoginSubmitButton
-                        type="submit"
-                        disabled={errorMessages.length > 0}
-                        onSubmit={handleSubmit}
-                    >
-                        변경하기
-                    </Styled.LoginSubmitButton>
-                </Styled.FormInnerWrapper>
-            </form>
+            <Styled.FormContainer>
+                <form>
+                    <Styled.FormInnerWrapper>
+                        <Styled.InputContainer>
+                            <Styled.LoginInput 
+                                type={showCurrentPassword ? "text" : "password"}
+                                placeholder='현재 비밀번호' 
+                                value={currentPassword}
+                                onChange={(e) => setCurrentPassword(e.target.value)}
+                                required
+                            />
+                            <Styled.ToggleButton onClick={() => setShowCurrentPassword(!showCurrentPassword)}>
+                                {showCurrentPassword ? '숨기기' : '보기'}
+                            </Styled.ToggleButton>
+                        </Styled.InputContainer>
+                    </Styled.FormInnerWrapper>
+                    <Styled.FormInnerWrapper>
+                        <Styled.InputContainer>
+                            <Styled.LoginInput 
+                                type={showNewPassword ? "text" : "password"}
+                                placeholder='새 비밀번호' 
+                                value={newPassword}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                                required
+                            />
+                            <Styled.ToggleButton onClick={() => setShowNewPassword(!showNewPassword)}>
+                                {showNewPassword ? '숨기기' : '보기'}
+                            </Styled.ToggleButton>
+                        </Styled.InputContainer>
+                    </Styled.FormInnerWrapper>
+                    <Styled.FormInnerWrapper>
+                        <Styled.InputContainer>
+                            <Styled.LoginInput 
+                                type={showConfirmPassword ? "text" : "password"}
+                                placeholder='새 비밀번호 확인' 
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                required
+                            />
+                            <Styled.ToggleButton onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                                {showConfirmPassword ? '숨기기' : '보기'}
+                            </Styled.ToggleButton>
+                        </Styled.InputContainer>
+                    </Styled.FormInnerWrapper>
+                    <Styled.FormInnerWrapper>
+                        <Styled.ErrorMsgContainer $visibleTrue={`${errorMessages.length > 0}`}>
+                            {errorMessages.map((error, index) => (
+                                <div key={index}>{error}</div>
+                            ))}
+                        </Styled.ErrorMsgContainer>
+                    </Styled.FormInnerWrapper>
+                    <Styled.FormInnerWrapper>
+                        <Styled.LoginSubmitButton
+                            type="submit"
+                            disabled={errorMessages.length > 0}
+                            onSubmit={handleSubmit}
+                        >
+                            변경하기
+                        </Styled.LoginSubmitButton>
+                    </Styled.FormInnerWrapper>
+                </form>
+            </Styled.FormContainer>
         </>
     );
 };

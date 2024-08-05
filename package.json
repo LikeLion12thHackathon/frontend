@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --config config/webpack.config.prod.js",
+    "start": "webpack serve --config config/webpack.config.dev.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "react": "^18.3.1",
     "react-calendar": "^5.0.0",
     "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.24.1",
     "recoil": "^0.7.7",
     "recoil-persist": "^5.1.0",
