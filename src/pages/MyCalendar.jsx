@@ -14,12 +14,6 @@ export const MyCalendar = () => {
     const handleDateChange = (newDate) => {
         setDate(newDate);
     };
-    
-    const handleTodayClick = () => {
-        const today = new Date();
-        setActiveStartDate(today);
-        setDate(today);
-    };
 
     const handleTileClick = (date) => {
         setSelectedDate(date);
@@ -49,9 +43,11 @@ export const MyCalendar = () => {
 
                         if (view === "month" && date.getMonth() === today.getMonth() && date.getDate() === today.getDate()) {
                             html.push(<Styled.StyledToday key="today">오늘</Styled.StyledToday>);
+                            console.log("확인용1");
                         }
                         if (attendDay.find((x) => x === formattedDate)) {
                             html.push(<Styled.StyledDot key={formattedDate} />);
+                            console.log("확인용2");
                         }
                         return (
                             <div onClick={() => handleTileClick(formattedDate)}>
