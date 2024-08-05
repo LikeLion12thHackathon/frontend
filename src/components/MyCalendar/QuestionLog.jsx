@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as Styled from '../../css/styled/ask.detail.styled';
 import { getAllSymptoms } from '../../function/ask';
 
-export const QuestionDetail = ({ date }) => {
+export const QuestionLog = ({ date }) => {
     const [symptomsData, setSymptomsData] = useState([]);
     const [loading, setLoading] = useState(true); // 로딩 상태 추가
     const [error, setError] = useState(null); // 에러 상태 추가
