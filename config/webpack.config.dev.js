@@ -5,7 +5,6 @@ const path = require("path");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-    mode: process.env.mode || 'development',
     entry: {
         main: "./src/index.js"
     },
@@ -14,10 +13,16 @@ module.exports = {
         filename: "[hash].js",
         publicPath: "/",
     },
+    mode: "development",
+    devServer: {
+        host: "localhost",
+        port: 3000,
+        hot: true,
+        open: true,
+        historyApiFallback: true,
+    },
     resolve: {
-        // path.resove 형태로 사용할 수도 있다.
-        // 그러면 node의 기본 모듈 'path'를 불러와야 한다.
-        extensions: [".js", ".jsx", "..."],
+        extensions: [".js", ".jsx"],
     },
     module: {
         rules: [
@@ -61,11 +66,4 @@ module.exports = {
         }),
         new Dotenv(),
     ],
-    devServer: {
-        host: "localhost",
-        port: 3000,
-        hot: true,
-        open: true,
-        historyApiFallback: true,
-    },
 };
