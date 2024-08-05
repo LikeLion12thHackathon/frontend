@@ -2,7 +2,6 @@ import { Header } from '../components/Header';
 import * as Styled from '../css/styled/calendar.styled';
 import moment from "moment";
 import { useState } from 'react';
-import { QuestionLog } from '../components/Mycalendar/QuestionLog';
 
 export const MyCalendar = () => {
     const today = new Date();
@@ -58,9 +57,9 @@ export const MyCalendar = () => {
                 />
             </Styled.CalendarContainer>
 
-            {selectedDate && (
-                <QuestionLog date={selectedDate} />
-            )}
+            {/* {selectedDate && (
+                <QuestionDetail date={selectedDate} />
+            )} */}
         </Styled.Container>
     );
 };
