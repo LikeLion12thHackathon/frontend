@@ -35,6 +35,7 @@ const App = () => {
                 {/* Public으로 접근 가능한 경로 */}
                 <Route path="/" element={<Login setToken={setToken} />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/mypage" element={<MyPage />} />
 
                 {/* Private으로 접근 가능한 경로 */}
                 <Route path="/main" element={<PrivateRoute authenticated={token} element={<Main />} />} />

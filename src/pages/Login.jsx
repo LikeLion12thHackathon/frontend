@@ -79,12 +79,13 @@ export const Login = () => {
     }
 
     return (
-        <>
+        <div style={{height: `100%`, overflow: `hidden`}}>
             <Header />
+            <Styled.ServiceTitle>1분 닥터</Styled.ServiceTitle>
             <Styled.FormContainer>
                 <form>
                     <Styled.FormInnerWrapper>
-                            <Styled.LoginInput 
+                            <Styled.LoginInput
                                 type="username"
                                 id="username"
                                 name="username"
@@ -134,6 +135,6 @@ export const Login = () => {
                     {/* <ToastContainer /> */} 
                 </form>
             </Styled.FormContainer>
-        </>
+        </div>
     )
 }

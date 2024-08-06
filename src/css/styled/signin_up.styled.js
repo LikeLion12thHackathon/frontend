@@ -12,6 +12,15 @@ export const FormContainer = styled.div`
     box-sizing: border-box; /* 패딩 포함 */
 `;
 
+export const ServiceTitle = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4186F5;
+    font-size: 2rem;
+    font-weight: bold;
+`
+
 export const LoginTitle = styled.h1`
     text-align: center;
     margin-bottom: 4px;
