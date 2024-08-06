@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import * as Styled from "../css/styled/signin_up.styled";
 import { Header } from "../components/Header";
 import { isRequired, MinimumLength, CantContainSpace, EmailFormat, SpecialText, UserRules } from "../constant/user.constraints";
@@ -92,12 +92,31 @@ export const Register = () => {
         setError(result); // 최종 에러 메시지 설정
     }
     
+    // 프로필 사진 변경 로직
+    // const fileInput = useRef(null)
+ 
+    // const onChangeProfile = (e) => {
+	// if(e.target.files[0]){
+    //         setFile(e.target.files[0])
+    //     }else{ //업로드 취소할 시
+    //         setImage("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+    //         return
+    //     }
+	// //화면에 프로필 사진 표시
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //         if(reader.readyState === 2){
+    //             setImage(reader.result)
+    //         }
+    //     }
+    //     reader.readAsDataURL(e.target.files[0])
+    // }
 
     async function onSubmit(event) {
         event.preventDefault();
         // 유효하지 않은 정보가 하나라도 있으면 안됨
         if(Object.keys(valid).some((key) => 
-            (key !== 'profileimg' && key !== 'admin' && valid[key] === false))) {
+            (valid[key] === false))) {
             alert("제대로 입력해주세요");
             // ToastifyWarn("모든 항목을 제대로 입력해주세요");
             return;
@@ -139,6 +158,14 @@ export const Register = () => {
                             onClick={() => {fileInput.current.click()}} 
                         /> */}
                         <Styled.StyledLabel htmlFor="profileimg">프로필 사진</Styled.StyledLabel>
+                        {/* <Styled.FileInput
+                            type='file' 
+                            style={{display:'none'}}
+                            accept='image/jpg,impge/png,image/jpeg' 
+                            name='profile_img'
+                            onChange={onChangeProfile}
+                            ref={fileInput} 
+                        /> */}
                         <Styled.FileInput
                             type="file" 
                             id="profileimg" 
@@ -232,7 +259,7 @@ export const Register = () => {
                                     name="admin"
                                     value="true"
                                     id="admin"
-                                    checked={admin === true}
+                                    checked={admin === false}
                                     onChange={onChange}
                                 />
                             <Styled.CheckBoxLabel htmlFor="admin">
@@ -243,13 +270,20 @@ export const Register = () => {
                                     name="admin"
                                     value="false"
                                     id="user"
-                                    checked={admin === false}
+                                    checked={admin === true}
                                     onChange={onChange}
                                 />
                             <Styled.CheckBoxLabel htmlFor="user">
                                 사용자
                             </Styled.CheckBoxLabel>
+                            
                         </Styled.RadioBox>
+                        <Styled.MsgContainer $visibleTrue={true}>
+                            * 모두 필수 입력 항목입니다.
+                        </Styled.MsgContainer>
+                        <Styled.MsgContainer $visibleTrue={true}>
+                            * 관리자 여부는 사용자로 설정해 주세요.
+                        </Styled.MsgContainer>
                     </Styled.FormInnerWrapper>
 
                     <Styled.FormInnerWrapper>
