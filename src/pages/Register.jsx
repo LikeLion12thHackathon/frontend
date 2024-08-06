@@ -22,7 +22,7 @@ export const Register = () => {
         username: false,
         password: false,
         email: false,
-        profileimg: true, // 프로필 이미지는 유효성 검사에서 제외
+        profileimg: false, // 프로필 이미지는 유효성 검사에서 제외
         name: false,
         gender: false,
         admin: false, // 기본값을 true로 설정 (true/false 모두 허용)
@@ -259,22 +259,22 @@ export const Register = () => {
                                     name="admin"
                                     value="true"
                                     id="admin"
-                                    checked={admin === false}
+                                    checked={admin === true}
                                     onChange={onChange}
                                 />
                             <Styled.CheckBoxLabel htmlFor="admin">
-                                관리자
+                                사용자
                             </Styled.CheckBoxLabel>   
                                 <Styled.CheckBoxInput
                                     type="radio"
                                     name="admin"
                                     value="false"
                                     id="user"
-                                    checked={admin === true}
+                                    checked={admin === false}
                                     onChange={onChange}
                                 />
                             <Styled.CheckBoxLabel htmlFor="user">
-                                사용자
+                                관리자
                             </Styled.CheckBoxLabel>
                             
                         </Styled.RadioBox>
