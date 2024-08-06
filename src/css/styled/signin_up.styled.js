@@ -143,6 +143,16 @@ export const CheckBoxLabel = styled.label`
     color: #5C5C5C;
 `;
 
+export const MsgContainer = styled.div`
+    width: 100%;
+    height: 20px;
+    padding: 10px;
+    color: #4186F5;
+    font-weight: 600;
+    visibility: ${(props) => props.$visibleTrue ? 'visible' : 'hidden'};
+    white-space: pre-wrap; /* 줄 바꿈 및 공백 유지 */
+`;
+
 export const ErrorMsgContainer = styled.div`
     width: 100%;
     height: 20px;
