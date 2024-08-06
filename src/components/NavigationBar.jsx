@@ -6,12 +6,12 @@ export const NavigationBar = () => {
     const locationNow = useLocation();
     
     return (
-            locationNow.pathname === "/" || locationNow.pathname === "/register" ? (
-                null
-            ) : (
+            locationNow.pathname === "/main" || locationNow.pathname === "/mycalendar" || locationNow.pathname === "/mypage" ? (
                 <Styled.NavigationBar>
                     <IconButton />
                 </Styled.NavigationBar>
+            ) : (
+                null
             )
     );
 }
