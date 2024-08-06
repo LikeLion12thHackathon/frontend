@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { getAccesstoken, setToken } from "../function/common.js";
 import { useSetRecoilState } from 'recoil';
 import { userState } from '../hooks/userState.js'; // userState의 경로 확인
+import { Header } from "../components/Header.jsx";
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -79,10 +80,10 @@ export const Login = () => {
 
     return (
         <>
+            <Header />
             <Styled.FormContainer>
                 <form>
                     <Styled.FormInnerWrapper>
-                        <Styled.InputContainer>
                             <Styled.LoginInput 
                                 type="username"
                                 id="username"
@@ -92,10 +93,8 @@ export const Login = () => {
                                 value={username}
                                 onChange={onChange}
                             />
-                        </Styled.InputContainer>
                     </Styled.FormInnerWrapper>
                     <Styled.FormInnerWrapper>
-                        <Styled.InputContainer>
                             <Styled.LoginInput 
                                 type="password"
                                 id="password"
@@ -105,7 +104,6 @@ export const Login = () => {
                                 value={password}
                                 onChange={onChange}
                             />
-                        </Styled.InputContainer>
                     </Styled.FormInnerWrapper>
 
                     <Styled.FormInnerWrapper>

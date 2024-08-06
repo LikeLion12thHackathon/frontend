@@ -20,7 +20,8 @@ export const LoginTitle = styled.h1`
 export const FormInnerWrapper = styled.div`
     margin-top: 20px;
     width: 100%;
-    max-width: 400px; /* 최대 너비 설정 */
+    max-width: 332px; /* 최대 너비 설정 */
+    flex-direction: column;
 `;
 
 export const ImageBox = styled.div`
@@ -33,7 +34,7 @@ export const ImageBox = styled.div`
 
 export const LabelBox = styled.div`
     width: 100%;
-    max-width: 400px; /* 최대 너비 설정 */
+    max-width: 332px; /* 최대 너비 설정 */
     height: 50px;
     display: flex;
     justify-content: center;
@@ -41,40 +42,35 @@ export const LabelBox = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-    display: block;
+    display:flex;
     font-weight: 600;
     margin-bottom: 10px;
     margin-top: 20px;
 `;
 
-export const LoginInput = styled.input`
+export const InputBase = styled.input`
     width: 100%;
-    max-width: 332px; /* 최대 너비 설정 */
     height: 52px;
     padding: 20px 15px;
     font-size: 1rem; /* 반응형 글꼴 크기 */
     border-radius: 10px;
     border: 1px solid #cccccc;
     box-sizing: border-box;
+
     &:focus {
         border: 2px solid #4186F5;
         outline: none;
     }
 `;
 
-export const RegisterInput = styled.input`
-    width: 100%;
+export const LoginInput = styled(InputBase)`
+    min-width: 220px;
     max-width: 332px; /* 최대 너비 설정 */
-    height: 52px;
-    padding: 20px 15px;
-    font-size: 1rem; /* 반응형 글꼴 크기 */
-    border-radius: 10px;
-    border: 1px solid #cccccc;
-    box-sizing: border-box;
-    &:focus {
-        border: 2px solid #4186F5;
-        outline: none;
-    }
+`;
+
+export const RegisterInput = styled(InputBase)`
+    min-width: 220px;
+    max-width: 332px; /* 최대 너비 설정 */
 `;
 
 export const FileInput = styled.input`
@@ -87,6 +83,7 @@ export const FileInput = styled.input`
 `;
 
 export const RadioBox = styled.div`
+    position: relative;
     width: 100%;
     max-width: 332px; /* 최대 너비 설정 */
     height: 52px;
@@ -196,7 +193,6 @@ export const ToggleButton = styled.button`
     margin: 0;
 `;
 
-// 미디어 쿼리 추가
 export const ResponsiveStyles = styled.div`
     @media (max-width: 768px) {
         ${FormContainer} {
@@ -208,7 +204,7 @@ export const ResponsiveStyles = styled.div`
             font-size: 1.5rem; /* 글꼴 크기 조정 */
         }
 
-        ${LoginInput}, ${RegisterInput}, ${LoginSubmitButton} {
+        ${InputBase} {
             width: 100%; /* 너비를 100%로 설정 */
             max-width: none; /* 최대 너비 제한 해제 */
         }
