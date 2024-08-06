@@ -8,6 +8,7 @@ export const FormContainer = styled.div`
     width: 100%;
     height: 100vh; /* 전체 화면 높이에 맞춤 */
     padding: 20px; /* 여백 추가 */
+    // margin-bottom: 20vh;
     box-sizing: border-box; /* 패딩 포함 */
 `;
 
@@ -42,7 +43,7 @@ export const LabelBox = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-    display:flex;
+    display: flex;
     font-weight: 600;
     margin-bottom: 10px;
     margin-top: 20px;
